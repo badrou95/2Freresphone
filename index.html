@@ -1,90 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2Frères Phone</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="logo.png">
-  <meta name="theme-color" content="#ff33cc">
-
-  <script>
-    // Enregistrement du service worker
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js").then(() => {
-        console.log("Service Worker enregistré ✅");
-      });
-    }
-
-    // Gestion du bouton installer
-    let deferredPrompt;
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById("installBtn").style.display = "block";
-    });
-
-    function installApp() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choice) => {
-          if (choice.outcome === "accepted") {
-            console.log("✅ L’utilisateur a installé l’app");
-          } else {
-            console.log("❌ Installation annulée");
-          }
-          deferredPrompt = null;
-        });
-      }
-    }
-  </script>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#6a11cb" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <header>
+  <!-- Barre en violet dégradé -->
+  <header class="header">
     <h1>2Frères Phone</h1>
-    <img src="logo.png" alt="Logo 2Frères Phone" style="height:60px;">
+    <button id="installBtn" hidden>📲 Installer l'app</button>
   </header>
 
-  <main>
-    <h2>Compatibilité des verres trempés</h2>
-    <p>Recherchez rapidement un modèle et découvrez les verres compatibles.</p>
-
-    <!-- Bouton installer -->
-    <button id="installBtn" onclick="installApp()" style="display:none; padding:10px 20px; background:#ff33cc; color:#fff; border:none; border-radius:8px; cursor:pointer;">
-      📲 Installer l’application
-    </button>
-
-    <section id="recherche">
-      <input type="text" id="searchInput" placeholder="Rechercher un modèle...">
-      <div id="results"></div>
-    </section>
-
-    <!-- Carte Google Maps -->
-    <h2>📍 Où nous trouver ?</h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.237598813066!2d3.0720184!3d36.7372327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb34b33df6c67%3A0xf7b4798f8fd55a7b!2s2Fr%C3%A8res%20Phone!5e0!3m2!1sfr!2sdz!4v1724183832089"
-      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+  <!-- Carte Google Maps -->
+  <section class="map-section">
+    <h2>📍 Localisation</h2>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.162659274235!2d3.2081053!3d36.7084209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fafbc3f85c67f%3A0xbba88ad5c7d2762c!2s2Fr%C3%A8res%20Phone!5e0!3m2!1sfr!2sdz!4v1724176400000"
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
     </iframe>
-
-    <!-- Section Articles -->
-    <h2>📰 Articles & Actualités</h2>
-    <div id="articles">
-      <article>
-        <h3>Nouveaux modèles 2025</h3>
-        <p>Découvrez les derniers smartphones compatibles avec nos verres trempés.</p>
-      </article>
-      <article>
-        <h3>Conseils d’entretien</h3>
-        <p>Comment protéger au mieux votre écran et prolonger la durée de vie de votre smartphone.</p>
-      </article>
-    </div>
-  </main>
+  </section>
 
   <footer>
-    <p>© 2025 2Frères Phone – Tous droits réservés</p>
+    <p>© 2025 2Frères Phone</p>
   </footer>
-
-  <script src="app.js"></script>
 </body>
 </html>
