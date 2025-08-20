@@ -1,0 +1,26 @@
+[
+  { "brand":"Samsung","model":"Galaxy A71","compatibleWith":["Samsung Galaxy S20 FE","Samsung Galaxy A51","Samsung Galaxy A72","Samsung Galaxy M51","Oppo A91","Realme 7 Pro"],"clusterId":"s-6.7-flat-2020" },
+  { "brand":"Samsung","model":"Galaxy S20 FE","compatibleWith":["Samsung Galaxy A71","Samsung Galaxy A51","Samsung Galaxy M51"],"clusterId":"s-6.5-flat-2020" },
+  { "brand":"Samsung","model":"Galaxy A51","compatibleWith":["Samsung Galaxy A71","Samsung Galaxy S20 FE"],"clusterId":"s-6.5-flat-2020" },
+
+  { "brand":"Apple","model":"iPhone 14","compatibleWith":["Apple iPhone 13"],"clusterId":"a-6.1-flat-notch" },
+  { "brand":"Apple","model":"iPhone 13","compatibleWith":["Apple iPhone 14","Apple iPhone 16 Plus","Apple iPhone 15 Plus"],"clusterId":"a-6.1-flat-notch" },
+  { "brand":"Apple","model":"iPhone 16 Plus","compatibleWith":["Apple iPhone 15 Plus","Apple iPhone 13"],"clusterId":"a-6.7-flat-dyn" },
+  { "brand":"Apple","model":"iPhone 15 Plus","compatibleWith":["Apple iPhone 16 Plus","Apple iPhone 13"],"clusterId":"a-6.7-flat-dyn" },
+
+  { "brand":"Honor","model":"X9c","compatibleWith":["Honor X8c","Huawei Nova Y91","Realme 11 Pro+"],"clusterId":"h-6.78-lcd-punch" },
+  { "brand":"Realme","model":"11 Pro+","compatibleWith":["Oppo Reno 10 Pro","Honor X9c","OnePlus 11R"],"clusterId":"bbk-6.7-curved-2023" },
+  { "brand":"OnePlus","model":"11R","compatibleWith":["Realme 11 Pro+","Oppo Reno 10 Pro"],"clusterId":"bbk-6.74-curve-2023" },
+
+  { "brand":"Google","model":"Pixel 8 Pro","compatibleWith":["Google Pixel 7 Pro"],"clusterId":"g-6.7-curve" },
+  { "brand":"Sony","model":"Xperia 1 V","compatibleWith":["Sony Xperia 1 IV","Sony Xperia 5 V"],"clusterId":"sony-21x9-6.5" },
+
+  { "brand":"Infinix","model":"Note 30 VIP","compatibleWith":["Tecno Camon 20 Pro"],"clusterId":"t-6.78-flat-2023" },
+  { "brand":"Tecno","model":"Camon 20 Pro","compatibleWith":["Infinix Note 30 VIP"],"clusterId":"t-6.78-flat-2023" },
+
+  { "brand":"Huawei","model":"Nova 12i","compatibleWith":["Huawei Nova 11i","Honor X50i"],"clusterId":"hw-6.7-lcd-2024" },
+  { "brand":"Honor","model":"Magic6 Lite","compatibleWith":["Honor 90 Lite","Huawei Nova 12 SE"],"clusterId":"h-6.7-oled-curve-2024" },
+
+  { "brand":"Nokia","model":"G60 5G","compatibleWith":["Nokia X30","Motorola Edge 40"],"clusterId":"n-6.58-flat" },
+  { "brand":"Motorola","model":"Moto G84","compatibleWith":["Moto G73","Realme 10 Pro+"],"clusterId":"m-6.55-flat" }
+]
