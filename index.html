@@ -1,96 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>2Frères Phone – Glace Finder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2Frères Phone</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="images/icon-192.png">
-  <link rel="apple-touch-icon" href="images/icon-192.png">
-  <meta name="theme-color" content="#512da8">
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="app.js"></script>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="theme-color" content="#ff33cc">
+
+  <script>
+    // Enregistrement du service worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").then(() => {
+        console.log("Service Worker enregistré ✅");
+      });
+    }
+
+    // Gestion du bouton installer
+    let deferredPrompt;
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById("installBtn").style.display = "block";
+    });
+
+    function installApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choice) => {
+          if (choice.outcome === "accepted") {
+            console.log("✅ L’utilisateur a installé l’app");
+          } else {
+            console.log("❌ Installation annulée");
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
+  </script>
 </head>
 <body>
- <img src="assets/img/logo.png" alt="2Frères Phone" class="logo">
-  <header class="header">
-    <div class="brand">
-      <img src="images/logo.png" alt="2Frères Phone" class="logo">
-      <div>
-        <h1>2Frères Glace Finder</h1>
-        <p class="tagline">“Trouve la bonne glace, du premier coup.”</p>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button id="btn-install" class="btn btn-primary">📲 Installer l’app</button>
-
-      <div class="lang">
-        <select id="lang-select" aria-label="Langue">
-          <option value="fr" selected>🇩🇿 Français</option>
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-          <option value="kab">ⵣ Tamaziɣt</option>
-        </select>
-      </div>
-    </div>
+  <header>
+    <h1>2Frères Phone</h1>
+    <img src="logo.png" alt="Logo 2Frères Phone" style="height:60px;">
   </header>
 
-  <nav class="topnav">
-    <a href="index.html" class="active">🔎 Recherche</a>
-    <a href="articles.html">📰 Articles</a>
-  </nav>
+  <main>
+    <h2>Compatibilité des verres trempés</h2>
+    <p>Recherchez rapidement un modèle et découvrez les verres compatibles.</p>
 
-  <main class="container">
-    <section class="search-panel card">
-      <div class="row">
-        <input id="search" class="search-input" placeholder="Ex: Samsung A71, iPhone 15 Plus…" autocomplete="off" />
-      </div>
-      <div class="helper-row">
-        <label class="chk">
-          <input type="checkbox" id="only-exact" />
-          <span id="t-only-exact">Compatibilité stricte</span>
-        </label>
-        <label class="chk">
-          <input type="checkbox" id="cross-brand" checked />
-          <span id="t-cross-brand">Inclure multi-marques</span>
-        </label>
-      </div>
+    <!-- Bouton installer -->
+    <button id="installBtn" onclick="installApp()" style="display:none; padding:10px 20px; background:#ff33cc; color:#fff; border:none; border-radius:8px; cursor:pointer;">
+      📲 Installer l’application
+    </button>
+
+    <section id="recherche">
+      <input type="text" id="searchInput" placeholder="Rechercher un modèle...">
+      <div id="results"></div>
     </section>
 
-    <section id="results" class="grid"></section>
+    <!-- Carte Google Maps -->
+    <h2>📍 Où nous trouver ?</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.237598813066!2d3.0720184!3d36.7372327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb34b33df6c67%3A0xf7b4798f8fd55a7b!2s2Fr%C3%A8res%20Phone!5e0!3m2!1sfr!2sdz!4v1724183832089"
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
 
-    <section class="card">
-      <h2 id="t-how-title">Comment ça marche ?</h2>
-      <ul class="howto">
-        <li id="t-how-1">Tape un modèle (marque + modèle) et valide.</li>
-        <li id="t-how-2">On trouve les glaces compatibles (mêmes dimensions/forme).</li>
-        <li id="t-how-3">Les compatibilités **croisées** (Samsung ↔ Oppo ↔ Xiaomi…) sont incluses.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2 id="t-store">Magasin</h2>
-      <div class="store">
-        <div>
-          <p><strong>2Frères Phone</strong></p>
-          <p>📍 10 Rue Achour Maïdi (ex Rue Ampère), <b>Alger Centre</b></p>
-          <p>📞 0795 58 23 00</p>
-          <p>🕘 08:00 – 21:00 (Sam-Ven)</p>
-        </div>
-       <iframe
-  class="map"
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12...exact-location-details..."
->
-</iframe>
-     </div>
-    </section>
+    <!-- Section Articles -->
+    <h2>📰 Articles & Actualités</h2>
+    <div id="articles">
+      <article>
+        <h3>Nouveaux modèles 2025</h3>
+        <p>Découvrez les derniers smartphones compatibles avec nos verres trempés.</p>
+      </article>
+      <article>
+        <h3>Conseils d’entretien</h3>
+        <p>Comment protéger au mieux votre écran et prolonger la durée de vie de votre smartphone.</p>
+      </article>
+    </div>
   </main>
 
-  <footer class="footer">
-    <p>© 2Frères Phone — PWA installable. Fonctionne hors-ligne après première visite.</p>
+  <footer>
+    <p>© 2025 2Frères Phone – Tous droits réservés</p>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
